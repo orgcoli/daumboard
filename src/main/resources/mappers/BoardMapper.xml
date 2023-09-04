@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daum.daumboard.DAO.BoardDAO">
+    <!--사용자가 이용할 id이름을 반드시 기억-->
+    <select id="boardAllList" resultType="BoardVO">
+        SELECT * FROM board_tbl
+    </select>
+    <insert id="boardInsert">
+        INSERT INTO board_tbl (subject, bcontent, name)
+        VALUES (#{subject}, #{bcontent}, #{name});
+    </insert>
+    <delete id="boardDelete">
+        DELETE FROM board_tbl WHERE no=#{no}
+    </delete>
+    <update id="boardUpdate">
+        UPDATE board_tbl SET subject=#{subject},
+                             bcontent=#{bcontent},
+                             name=#{name} WHERE no = #{no}
+    </update>
+    <select id="boardOneList" resultType="BoardVO">
+        SELECT * FROM `board_tbl` WHERE no = #{no}
+    </select>
+</mapper>
